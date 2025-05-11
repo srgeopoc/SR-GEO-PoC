@@ -1,12 +1,17 @@
+---
+**Document:** SR-GEO-PoC Abstract
+**Author:** Ashley Clark  
+**Affiliation:** Independent Researcher  
+**Contact:** earthresonance.project@gmail.com  
+**GitHub:** https://github.com/srgeopoc/SR-GEO-PoC  
+**DOI:** https://doi.org/10.5281/zenodo.15380981  
+**Zenodo Record:** https://zenodo.org/records/15380981
+---
 
-# Abstract
+## Abstract
 
-**Title:**  
-*Mapping Earth's Hidden Energy: A Multi-Domain Correlation Framework Linking Schumann Resonance, Volcanic Activity, and Ionospheric Disturbance*
+This scientific white paper presents SR-GEO-PoC, a reproducible open-source framework for identifying precursor signals prior to seismic and volcanic events by cross-correlating public atmospheric, electromagnetic, and geophysical data. While current early warning systems focus on seismic or thermal activity detected at or after rupture, this study demonstrates that low-frequency signals—such as Schumann Resonance (SR), Total Electron Content (TEC) anomalies, gravity field shifts, and transient luminous events (TLEs)—can appear hours to days beforehand.
 
-**Abstract:**  
-The Schumann Resonance (SR) is traditionally viewed as a passive background phenomenon driven by global lightning activity. This paper challenges that assumption by proposing a novel multi-domain framework that treats SR not as a secondary effect, but as a sensitive mirror of Earth’s internal geophysical energy dynamics. Building on the principle that energy does not disappear but transforms, we investigate how tectonic stress, magma movement, and underground overpressure produce detectable electromagnetic and atmospheric signatures — long before visible eruption or seismic rupture occurs.
+Using real data from seven global events, including the Tonga eruption (2022), Nepal earthquake (2015), and a June 2021 activity cluster, we found a repeatable upward energy flow: crustal stress accumulation initiates electromagnetic emissions, which alter the Earth-ionosphere cavity and induce observable signals in multiple domains. These shifts are measurable via open satellite, magnetometer, GNSS, and lightning networks.
 
-The framework integrates time-aligned data from over a dozen open-access satellite and ground-based sources, including GNSS-derived Total Electron Content (TEC), SR harmonic shifts, volcanic lightning polarity, transient luminous events (TLEs), infrared thermal anomalies, and gravity field redistributions (GRACE). Using the January 2022 Hunga Tonga–Hunga Haʻapai eruption as a case study, we map the cascade of energy conversion from crustal pressure to atmospheric shockwave to ionospheric disturbance — all culminating in SR cavity modulation and non-storm-based electromagnetic discharge.
-
-Our findings suggest that upward energy flow — from ground to ionosphere — is both measurable and underrepresented in current models. The correlation patterns observed across SR, TEC, and EM fields present a compelling case for the development of early warning indicators based on synchronized anomaly detection. This work introduces a new systems-level lens for understanding the Earth-atmosphere-ionosphere triad and opens a path toward integrated geophysical forecasting.
+SR-GEO-PoC is designed to accelerate scientific validation and future integration into early warning systems by using only public data, simple tools, and replicable methods. We invite global researchers and institutions to test, extend, and apply this model in their regions to reduce disaster risk and improve readiness.
