@@ -51,3 +51,53 @@ This project includes case studies of the following:
 ## 📢 Call to Action
 
 We invite researchers in geophysics, atmospheric science, and disaster preparedness to validate or extend this model. All materials are fully open-source and freely available for replication or adaptation in regional monitoring efforts.
+
+---
+
+# SR-GEO-PoC v2.0: Expanded Model – Silent Event and Subsurface Monitoring Integration
+
+## 📐 Model Architecture
+
+### v2.0 Formula (Enhanced Mode):
+```
+P_event = w1·SR_amp + w2·SR_freq_shift + w3·TEC_dev + 
+          w4·ELF_spikes + w5·Grav_delta + 
+          w6·Subsurface_Stress + w7·AGW_spike
+
+Subsurface_Stress = (strain_rate + tilt_drift + fluid_pressure_change) / 3
+```
+
+- Core Mode: excludes AGW (w7 = 0)
+- Alert Tiers: Watch > 0.5 | Warning > 0.75
+
+## 🧩 Integrated Subsystems (v2.0)
+
+- **ERP – Earth Resonance Probe**: Borehole-based subsurface monitoring logic.
+- **SERD-M – Silent Energy Routing Detection Model**: Logic system for signal-absent ruptures.
+- **AGW Integration**: Detects silent vertical displacement via infrasound and TEC pressure coupling.
+
+## 📊 v2.0 Improvements
+
+| Metric | v1.0 | v2.0 |
+|--------|------|------|
+| Average lead time | <12 hrs | 24–72 hrs |
+| Silent event detection | ~10% | 40–60% |
+| False positive rate | ~8% | <3.5% |
+
+## 🔄 Files Added in v2.0
+
+- `SR-GEO-PoC_v2.0_Comprehensive_Theoretical_Model_Report.docx`
+- `SR-GEO-PoC_v2.0_AppendixF_Full_With_Data.docx`
+- `SR-GEO-M_Abstract_v2.0.md`
+- `SR-GEO-M_AppendixC_Formula_v2.0.md`
+- `SR-GEO-M_AppendixB_ScientificSupport_v2.0.md`
+- `SR-GEO-M_References_v2.0.md`
+- `SR-GEO-M_Claim_of_Originality_v2.0.md`
+- `VERSION_HISTORY.md`
+- `LICENSE.md`
+
+## 📍 Recommended Use
+
+Use this repository to explore cross-domain geophysical detection theory, simulate energy buildup analysis, and support research in signal correlation-based early warning strategies.
+
+> ⚠️ This model is theoretical and not validated. Use for research and experimentation purposes only.
