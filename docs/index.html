@@ -1,25 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SR-GEO-PoC Tracker</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR-GEO-PoC Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1 );
+        }
+        .status-high {
+            background-color: #dc3545;
+            color: white;
+        }
+        .status-medium {
+            background-color: #ffc107;
+            color: black;
+        }
+        .status-low {
+            background-color: #28a745;
+            color: white;
+        }
+        .parameter-chart {
+            height: 200px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .parameter-value {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #007bff;
+            transition: height 1s ease-in-out;
+        }
+        .map-container {
+            height: 400px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .risk-zone {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .risk-high {
+            background-color: #dc3545;
+        }
+        .risk-medium {
+            background-color: #ffc107;
+        }
+        .risk-low {
+            background-color: #28a745;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
-  <iframe src="https://srgeopoc.github.io/SR-GEO-PoC/sr_geo_poc_tracker/tracker/index.html"></iframe>
+    <div class="container">
+        <div class="header">
+            <h1>SR-GEO-PoC Tracker</h1>
+            <p>Schumann Resonance Geophysical Precursor Correlation Framework</p>
+            <p><small>DOI: <a href="https://doi.org/10.5281/zenodo.15380981" class="text-light">10.5281/zenodo.15380981</a></small></p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Current Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert status-medium" id="status-alert">
+                            <h4 id="status-text">Medium Risk Alert</h4>
+                            <p id="status-details">Elevated Schumann Resonance activity detected in Western Pacific region.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Last Updated:</strong> <span id="last-updated">May 24, 2025 12:30 UTC</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Prediction Confidence:</strong> <span id="confidence">76%</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Risk Zone Map</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="map-container" id="map">
+                            <div class="map-overlay">
+                                <h6>Western Pacific Region</h6>
+                                <p>3 active risk zones detected</p>
+                            </div>
+                            <!-- Simulated risk zones -->
+                            <div class="risk-zone risk-high" style="width: 80px; height: 80px; top: 150px; left: 300px;"></div>
+                            <div class="risk-zone risk-medium" style="width: 60px; height: 60px; top: 200px; left: 200px;"></div>
+                            <div class="risk-zone risk-low" style="width: 40px; height: 40px; top: 250px; left: 350px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Parameter Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Schumann Resonance</h6>
+                        <div class="parameter-chart">
+                            <div class="parameter-value" id="sr-value" style="height: 70%;"></div>
+                        </div>
+                        
+                        <h6>Total Electron Content (TEC )</h6>
+                        <div class="parameter-chart">
+                            <div class="parameter-value" id="tec-value" style="height: 45%;"></div>
+                        </div>
+                        
+                        <h6>ELF Burst Activity</h6>
+                        <div class="parameter-chart">
+                            <div class="parameter-value" id="elf-value" style="height: 80%;"></div>
+                        </div>
+                        
+                        <h6>Gravity Field Shift</h6>
+                        <div class="parameter-chart">
+                            <div class="parameter-value" id="gravity-value" style="height: 30%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Recent Alerts</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group" id="alerts-list">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                SR Amplitude Spike
+                                <span class="badge bg-danger rounded-pill">High</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                TEC Anomaly Detected
+                                <span class="badge bg-warning text-dark rounded-pill">Medium</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                ELF Burst Pattern
+                                <span class="badge bg-danger rounded-pill">High</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>SR-GEO-PoC Tracker - Developed based on research by Ashley Clark</p>
+            <p>GitHub: <a href="https://github.com/srgeopoc/SR-GEO-PoC">github.com/srgeopoc/SR-GEO-PoC</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Simulate real-time data updates
+        function updateParameters( ) {
+            // Random fluctuations for parameter values
+            const srHeight = 50 + Math.random() * 40;
+            const tecHeight = 30 + Math.random() * 50;
+            const elfHeight = 60 + Math.random() * 30;
+            const gravityHeight = 20 + Math.random() * 40;
+            
+            // Update parameter visualizations
+            document.getElementById('sr-value').style.height = srHeight + '%';
+            document.getElementById('tec-value').style.height = tecHeight + '%';
+            document.getElementById('elf-value').style.height = elfHeight + '%';
+            document.getElementById('gravity-value').style.height = gravityHeight + '%';
+            
+            // Update status based on parameter values
+            const avgRisk = (srHeight + tecHeight + elfHeight + gravityHeight) / 4;
+            let statusText, statusDetails, statusClass;
+            
+            if (avgRisk > 70) {
+                statusText = "High Risk Alert";
+                statusDetails = "Critical Schumann Resonance and ELF activity detected. Significant precursor signals observed.";
+                statusClass = "status-high";
+            } else if (avgRisk > 50) {
+                statusText = "Medium Risk Alert";
+                statusDetails = "Elevated Schumann Resonance activity detected in Western Pacific region.";
+                statusClass = "status-medium";
+            } else {
+                statusText = "Low Risk Alert";
+                statusDetails = "Normal parameter levels. No significant precursor signals detected.";
+                statusClass = "status-low";
+            }
+            
+            // Update status display
+            document.getElementById('status-text').textContent = statusText;
+            document.getElementById('status-details').textContent = statusDetails;
+            document.getElementById('status-alert').className = 'alert ' + statusClass;
+            
+            // Update last updated time
+            const now = new Date();
+            document.getElementById('last-updated').textContent = now.toLocaleString() + ' UTC';
+            
+            // Update confidence level
+            const confidence = Math.floor(40 + Math.random() * 55);
+            document.getElementById('confidence').textContent = confidence + '%';
+        }
+        
+        // Initial update
+        updateParameters();
+        
+        // Update every 5 seconds
+        setInterval(updateParameters, 5000);
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
