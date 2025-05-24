@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SR-GEO-PoC/static/css/main.bf8bef6d.css",
+    "main.js": "/SR-GEO-PoC/static/js/main.d67e96ad.js",
+    "index.html": "/SR-GEO-PoC/index.html",
+    "main.bf8bef6d.css.map": "/SR-GEO-PoC/static/css/main.bf8bef6d.css.map",
+    "main.d67e96ad.js.map": "/SR-GEO-PoC/static/js/main.d67e96ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf8bef6d.css",
+    "static/js/main.d67e96ad.js"
+  ]
+}
